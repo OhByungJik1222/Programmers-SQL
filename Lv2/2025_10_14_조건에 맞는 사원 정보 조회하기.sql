@@ -12,7 +12,6 @@ SELECT  SUM(B.SCORE) AS `SCORE`
     BY  B.EMP_NO
 HAVING  `SCORE` = (SELECT  MAX(SUB2.SCORE_SUM) AS `SCORE_MAX`
                      FROM  (SELECT  SUM(SUB1.SCORE) AS `SCORE_SUM`
-                                    ,SUB1.EMP_NO
                               FROM  HR_GRADE AS SUB1
                              WHERE  SUB1.YEAR = 2022
                              GROUP
