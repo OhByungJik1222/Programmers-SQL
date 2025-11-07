@@ -1,0 +1,17 @@
+WITH PLACE_COUNT AS (
+    SELECT  HOST_ID
+            ,COUNT(*) AS CNT
+      FROM  PLACES
+     GROUP
+        BY  HOST_ID
+)
+SELECT  A.ID
+        ,A.NAME
+        ,A.HOST_ID
+  FROM  PLACES AS A
+  LEFT
+  JOIN  PLACE_COUNT AS B
+    ON  A.HOST_ID = B.HOST_ID
+ WHERE  B.CNT > 1
+ ORDER
+    BY  A.ID ASC;
